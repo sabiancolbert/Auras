@@ -19,7 +19,8 @@ header{
 section{
     position: absolute;
     height:700px;
-    width:50%;
+    width:60%;
+    left:-10%;
     text-align: center;
 }
 
