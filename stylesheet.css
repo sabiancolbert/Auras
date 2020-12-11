@@ -4,6 +4,7 @@ body{
     /*height:764px;*/
     background-repeat: no-repeat;
     background-attachment: fixed;
+    text-align: center;
 }
 
 header{
@@ -21,10 +22,8 @@ section{
     text-align: center;
 }
 
-article{
-    border:1px solid red;
+img{
     width:100px;
     height:100px;
     position: relative;
-    margin:auto;
 }
