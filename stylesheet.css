@@ -2,6 +2,8 @@ body{
     margin:0;
     background: linear-gradient(170deg, #00b4b4, #f8d3fd);
     /*height:764px;*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 header{
