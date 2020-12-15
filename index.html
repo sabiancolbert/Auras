@@ -15,7 +15,7 @@
     <link rel="icon" type="image/ico" href="Resources/favicon.ico" />
 </head>
 
-<body>
+<body onload="onLoad()" onresize="onResize()">
     <header>Chakras</header>
     <section id="body">
         <img src="Resources/body.png" style="width:400px;height:700px">
@@ -27,14 +27,8 @@
     <section style="top:470px"><div id="yellow" onmouseover="loc('yellow')" onmouseout="clo('yellow')"></div></section>
     <section style="top:560px"><div id="orange" onmouseover="loc('orange')" onmouseout="clo('orange')"></div></section>
     <section style="top:653px"><div id="red" onmouseover="loc('red')" onmouseout="clo('red')"></div></section>
-    <section style="right:0;">
-        <article></article>
-        <article></article>
-        <article></article>
-        <article></article>
-        <article></article>
-        <article></article>
-        <article></article>
+    <section id="info">
+        <p>use any of the (14) colors for information</p>
     </section>
     <img src="Resources/Sahasrara.png">
     <br>

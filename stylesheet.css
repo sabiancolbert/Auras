@@ -24,6 +24,15 @@ section{
     text-align: center;
 }
 
+#info{
+    height: 200px;
+    width: 200px;
+    margin-left: 68%;
+    left:0;
+    right: 0;
+    background-color: white;
+}
+
 div{
     position: relative;
     border: 1px solid red;
