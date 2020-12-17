@@ -8,6 +8,7 @@ function onLoad() {
         //here redo body image, ddivs, and chakras
         $("imgs").style.position = "absolute";
         $("imgs").style.right = "0";
+        document.body.style.width = innerWidth + "px";
     }
 }
 
