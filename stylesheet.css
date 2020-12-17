@@ -17,10 +17,13 @@ header{
 }
 
 section{
+}
+
+article{
     position: absolute;
     height:50px;
     width:60%;
-    left:-10%;
+    margin:auto;
     text-align: center;
 }
 
@@ -37,16 +40,17 @@ div{
     position: relative;
     border: 1px solid red;
     border-radius: 50px;
-    margin: auto;
     height: 50px;
     width:50px;
-    z-index: 1;
+    z-index: 2;
+    margin:auto;
 }
 
 img{
     width:100px;
     height:100px;
     position: relative;
+    z-index: 1;
 }
 
 #body{

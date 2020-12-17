@@ -1,21 +1,18 @@
 function $($) { return document.getElementById($); }
+var runnning = false;
 
 function onLoad() {
-    if (window.innerWidth < 705) {
-        $("info").style.top = "880px";
-    }
-}
-
-function onResize() {
     if (window.innerWidth < 705) {
         $("info").style.margin = "0 auto";
         $("info").style.top = "880px";//here
         //here redo body image, ddivs, and chakras
-        //redraw info to center it (or resize width while preventing onResize to run (to avoid a loop))
-        $("info").style.display = "none";
-        $("info").offsetHeight;
-        $("info").style.display = "block";
-        window.onResize();
+        $("imgs").style.position = "absolute";
+        $("imgs").style.right = "0";
+    }
+}
+
+function onResize() {
+    if (window.innerWidth < 705) {//here copy above
     }
 }
 
