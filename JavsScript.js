@@ -1,27 +1,24 @@
 function $($) { return document.getElementById($); }
 var runnning = false;
+window.onload = function () { adjust(); }
 
-function onLoad() {
-    if (window.innerWidth < 705) {
-        $("info").style.margin = "0 auto";
-        $("info").style.top = "880px";//here
-        //here redo body image, ddivs, and chakras
+window.onresize = function () { adjust(); }
+
+function adjust() {
+    if (window.innerWidth < 750) {
+        $("layers").style.right = "30%";
+
+        $("chakras").style.width = "50%";
+        $("chakras").style.left = "50%";
+
+        $("info").style.width = "100%";
+        $("info").style.top = "880px";
+
         $("imgs").style.position = "absolute";
         $("imgs").style.right = "0";
-        //here mobile is too wide
-        document.html.style.width = innerWidth + "px";
     }
-}
+    else {
 
-function onResize() {
-    if (window.innerWidth < 705) {
-        $("info").style.margin = "0 auto";
-        $("info").style.top = "880px";//here
-        //here redo body image, ddivs, and chakras
-        $("imgs").style.position = "absolute";
-        $("imgs").style.right = "0";
-        //here mobile is too wide
-        document.html.style.width = innerWidth + "px";
     }
 }
 
