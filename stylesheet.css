@@ -35,14 +35,16 @@ section {
 
 #info {
     right: 0;
+    border-radius: 250px;
+    background: linear-gradient(45deg, #5501b6, #5501b606, transparent);
 }
 
 article {
-    height: 53px;
-    width: 250px;
-    margin-bottom: 53px;
-    margin: auto position: relative;
-    border: 1px solid purple;
+    right: -260px;
+    height: 57px;
+    width: 57px;
+    margin-bottom: 48px;
+    position: relative;
 }
 
 img {

@@ -11,11 +11,9 @@ function adjust() {
         $("chakras").style.width = "50%";
         $("chakras").style.left = "50%";
 
-        $("info").style.width = "100%";
         $("info").style.top = "880px";
-
-        $("imgs").style.position = "absolute";
-        $("imgs").style.right = "0";
+        $("info").style.height = "250px";
+        $("info").style.width = "100%";
     }
     else {
 
@@ -24,10 +22,10 @@ function adjust() {
 
 function loc(x) {
     $(x).style.backgroundColor = x;
-    $(x).style.width = "150px";
+    $(x).style.width = "250px";
 }
 
 function clo(x) {
     $(x).style.backgroundColor = "transparent";
-    $(x).style.width = "50px";
+    $(x).style.width = "57px";
 }
