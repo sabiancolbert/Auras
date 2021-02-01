@@ -16,7 +16,14 @@ function adjust() {
         $("info").style.width = "100%";
     }
     else {
+        $("layers").style.right = "50%";
 
+        $("chakras").style.width = "33%";
+        $("chakras").style.left = "33%";
+
+        $("info").style.top = "0";
+        $("info").style.height = "735px";
+        $("info").style.width = "33%";
     }
 }
 
