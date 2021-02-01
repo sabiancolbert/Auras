@@ -14,7 +14,14 @@ function onLoad() {
 }
 
 function onResize() {
-    if (window.innerWidth < 705) {//here copy above
+    if (window.innerWidth < 705) {
+        $("info").style.margin = "0 auto";
+        $("info").style.top = "880px";//here
+        //here redo body image, ddivs, and chakras
+        $("imgs").style.position = "absolute";
+        $("imgs").style.right = "0";
+        //here mobile is too wide
+        document.html.style.width = innerWidth + "px";
     }
 }
 

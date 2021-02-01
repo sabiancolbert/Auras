@@ -1,58 +1,58 @@
-body{
-    margin:0;
+body {
+    margin: 0;
     background: linear-gradient(170deg, #00b4b4, #f8d3fd);
-    /*height:764px;*/
     background-repeat: no-repeat;
     background-attachment: fixed;
-    text-align: center;
 }
 
-header{
-    /*background-color: #1100ff;*/
-    height:50px;
-    text-align: center;
-    color:black;
-    font-weight: bold;
+header {
+    height: 50px;
     font-size: 40px;
-}
-
-section{
-}
-
-article{
-    position: absolute;
-    height:50px;
-    width:60%;
-    margin:auto;
     text-align: center;
+    color: black;
+    font-weight: bold;
 }
 
-#info{
-    height: 200px;
-    width: 200px;
-    margin-left: 68%;
-    left:0;
+section {
+    width: 33%;
+    text-align: center;
+    position: absolute;
+}
+
+#layers {
+    background-image: url("Resources/body.png");
+}
+
+#chakras {
+    left: 33%;
+    margin: 0 1%;
+}
+
+#info {
     right: 0;
-    background-color: white;
 }
 
-div{
+article {
+    height: 50px;
+    width: 250px;
+    position: absolute;
+    border: 1px solid purple;
+}
+
+div {
+    /*
     position: relative;
     border: 1px solid red;
     border-radius: 50px;
     height: 50px;
-    width:50px;
+    width: 50px;
     z-index: 2;
-    margin:auto;
+    margin: auto;*/
 }
 
-img{
-    width:100px;
-    height:100px;
-    position: relative;
+img {
     z-index: 1;
-}
-
-#body{
-    height:700px;
+    height: 100px;
+    width: 100px;
+    position: relative;
 }
