@@ -5,7 +5,6 @@ window.onload = function () { adjust(); }
 window.onresize = function () { adjust(); }
 
 function adjust() {
-    $("sd").innerHTML = window.innerWidth
     if (window.innerWidth < 750) {
         $("layers").style.right = "25%";
 
@@ -13,8 +12,8 @@ function adjust() {
         $("chakras").style.left = "50%";
 
         $("info").style.top = "880px";
-        $("info").style.height = "250px";
-        $("info").style.width = window.innerWidth - 35 + "px";
+        $("info").style.height = "200px";
+        $("info").style.width = window.innerWidth - 140 + "px";
     }
     else {
         $("layers").style.right = "50%";
@@ -23,8 +22,8 @@ function adjust() {
         $("chakras").style.left = "33%";
 
         $("info").style.top = "0";
-        $("info").style.height = "735px";
-        $("info").style.width = "33%";
+        $("info").style.height = "750px";
+        $("info").style.width = "200px";
     }
 }
 
