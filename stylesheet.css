@@ -49,6 +49,13 @@ article {
     position: relative;
 }
 
+div {
+    padding: 0;
+    height: 50px;
+    width: 49%;
+    border: 1px solid red;
+}
+
 img {
     z-index: 1;
     height: 100px;
