@@ -30,12 +30,11 @@ section {
 
 #chakras {
     left: 33%;
-    margin: 0 1%;
 }
 
 #info {
-    border: 1px solid red;
     right: 0;
+    margin-right: 10px;
     border-radius: 250px;
     background: linear-gradient(45deg, #5501b6, #5501b606, transparent);
 }
@@ -44,7 +43,7 @@ article {
     right: -260px;
     height: 57px;
     width: 57px;
-    margin-bottom: 48px;
+    margin-bottom: 50px;
     position: relative;
 }
 

@@ -6,14 +6,14 @@ window.onresize = function () { adjust(); }
 
 function adjust() {
     if (window.innerWidth < 750) {
-        $("layers").style.right = "30%";
+        $("layers").style.right = "25%";
 
         $("chakras").style.width = "50%";
         $("chakras").style.left = "50%";
 
         $("info").style.top = "880px";
         $("info").style.height = "250px";
-        $("info").style.width = window.innerWidth + "px";
+        $("info").style.width = window.innerWidth - 35 + "px";
     }
     else {
         $("layers").style.right = "50%";
