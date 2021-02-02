@@ -23,9 +23,8 @@ function adjust() {
         $("chakras").style.width = "50%";
         $("chakras").style.left = "50%";
 
-        $("info").style.top = "880px";
-        $("info").style.height = "200px";
-        $("info").style.width = window.innerWidth - 140 + "px";
+        $("info").style.top = "800px";
+        $("info").style.left = (window.innerWidth - 280) / 2 + "px";
     }
     else {
         $("layers").style.right = "50%";
@@ -34,8 +33,7 @@ function adjust() {
         $("chakras").style.left = "33%";
 
         $("info").style.top = "0";
-        $("info").style.height = "750px";
-        $("info").style.width = "200px";
+        $("info").style.left = "60%";
     }
 }
 
