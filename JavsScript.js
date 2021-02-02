@@ -13,7 +13,7 @@ function adjust() {
 
         $("info").style.top = "880px";
         $("info").style.height = "250px";
-        $("info").style.width = "100%";
+        $("info").style.width = window.innerWidth + "px";
     }
     else {
         $("layers").style.right = "50%";
