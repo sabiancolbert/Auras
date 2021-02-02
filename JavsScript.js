@@ -5,6 +5,7 @@ window.onload = function () { adjust(); }
 window.onresize = function () { adjust(); }
 
 function adjust() {
+    $("sd").innerHTML = window.innerWidth
     if (window.innerWidth < 750) {
         $("layers").style.right = "25%";
 
