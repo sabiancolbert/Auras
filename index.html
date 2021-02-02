@@ -18,7 +18,7 @@
 
 <body>
 
-    <header id="sd">Chakras</header>
+    <header id="header">Select a Chakra</header>
     <!--layers-->
 
     <section id="layers">
@@ -47,29 +47,29 @@
     <!--chakras-->
 
     <section id="chakras">
-        <img src="Resources/Sahasrara.png">
+        <img onmouseup="setChakra(6)" src="Resources/Sahasrara.png">
         <br>
-        <img src="Resources/Ajna.png">
+        <img onmouseup="setChakra(5)" src="Resources/Ajna.png">
         <br>
-        <img src="Resources/Vishuddha.png">
+        <img onmouseup="setChakra(4)" src="Resources/Vishuddha.png">
         <br>
-        <img src="Resources/Anahata.png">
+        <img onmouseup="setChakra(3)" src="Resources/Anahata.png">
         <br>
-        <img src="Resources/Manipura.png">
+        <img onmouseup="setChakra(2)" src="Resources/Manipura.png">
         <br>
-        <img src="Resources/Svadhishthana.png">
+        <img onmouseup="setChakra(1)" src="Resources/Svadhishthana.png">
         <br>
-        <img src="Resources/Muladhara.png">
+        <img onmouseup="setChakra(0)" src="Resources/Muladhara.png">
     </section>
     <!--info-->
 
     <section id="info">
-        <div style="width:100%"></div>
-        <div style="float:left"></div>
-        <div style="float:right"></div>
-        <div style="float:left"></div>
-        <div style="float:right"></div>
-        <div style="bottom:0;width:100%"></div>
+        <div id="found" style="height:100px;width:100%"></div>
+        <div id="good" style="height:150px;float:left"></div>
+        <div id="bad" style="height:150px;float:right"></div>
+        <div id="frequency" style="height:50px;float:left"></div>
+        <div id="sense" style="height:50px;float:right"></div>
+        <div id="description" style="height:400px;width:100%;top:200px"></div>
     </section>
 
     <body>
