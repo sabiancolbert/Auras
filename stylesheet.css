@@ -34,6 +34,7 @@ section {
 }
 
 #info {
+    border: 1px solid red;
     right: 0;
     border-radius: 250px;
     background: linear-gradient(45deg, #5501b6, #5501b606, transparent);
