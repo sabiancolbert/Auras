@@ -11,8 +11,14 @@ class Chakra {
 }
 
 function $($) { return document.getElementById($); }
+window.onload = function () { adjust() }
+window.onresize = function () { adjust() }
 var runnning = false;
 var chakras = [new Chakra("Muladhara: Root Chakra", "Level with tailbone", "<i>396-432<br>Hz</i>", "<i>Smell</i>", "<strong>Safe<br>Calm<br>Secure</strong>", "<strong>Anxiety<br>Guilt<br>Fear</strong>", "Connection between you and your body, physical pleasure ,is the foundation for the other chakras, high good physical health, kow is frustration")];
+
+function adjust() {
+    $("chakras").style.left = window.innerWidth / 3 - 370 + "px";
+}
 
 function loc(x) {
     $(x).style.width = "80px";

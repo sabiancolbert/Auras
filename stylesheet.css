@@ -20,7 +20,8 @@ section {
 }
 
 #chakras {
-    width: 40%;
+    left: 20%;
+    width: 570px;
     background-image: url("Resources/body.png");
     background-size: cover;
     background-position: center;
