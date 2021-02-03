@@ -19,57 +19,40 @@
 <body>
 
     <header id="header">Select a Chakra</header>
-    <!--layers-->
-
-    <section id="layers">
-
-        <article id="white" onmouseover="loc('white')" onmouseout="clo('white')">
-        </article>
-
-        <article id="purple" onmouseover="loc('purple')" onmo0useout="clo('purple')">
-        </article>
-
-        <article id="blue" onmouseover="loc('blue')" onmouseout="clo('blue')">
-        </article>
-
-        <article id="green" onmouseover="loc('green')" onmouseout="clo('green')">
-        </article>
-
-        <article id="yellow" onmouseover="loc('yellow')" onmouseout="clo('yellow')">
-        </article>
-
-        <article id="orange" onmouseover="loc('orange')" onmouseout="clo('orange')">
-        </article>
-
-        <article id="red" onmouseover="loc('red')" onmouseout="clo('red')">
-        </article>
-    </section>
     <!--chakras-->
 
     <section id="chakras">
-        <img onmouseup="setChakra(6)" src="Resources/Sahasrara.png">
-        <br>
-        <img onmouseup="setChakra(5)" src="Resources/Ajna.png">
-        <br>
-        <img onmouseup="setChakra(4)" src="Resources/Vishuddha.png">
-        <br>
-        <img onmouseup="setChakra(3)" src="Resources/Anahata.png">
-        <br>
-        <img onmouseup="setChakra(2)" src="Resources/Manipura.png">
-        <br>
-        <img onmouseup="setChakra(1)" src="Resources/Svadhishthana.png">
-        <br>
-        <img onmouseup="setChakra(0)" src="Resources/Muladhara.png">
+
+        <img id="white" onmouseover="loc('white')" onmouseout="clo('white')" onmouseup="setChakra(6)" src="Resources/Sahasrara.png">
+        </img><br>
+
+        <img id="purple" onmouseover="loc('purple')" onmouseout="clo('purple')" onmouseup="setChakra(5)" src="Resources/Ajna.png">
+        </img><br>
+
+        <img id="blue" onmouseover="loc('blue')" onmouseout="clo('blue')" onmouseup="setChakra(4)" src="Resources/Vishuddha.png">
+        </img><br>
+
+        <img id="green" onmouseover="loc('green')" onmouseout="clo('green')" onmouseup="setChakra(3)" src="Resources/Anahata.png">
+        </img><br>
+
+        <img id="yellow" onmouseover="loc('yellow')" onmouseout="clo('yellow')" onmouseup="setChakra(2)" src="Resources/Manipura.png">
+        </img><br>
+
+        <img id="orange" onmouseover="loc('orange')" onmouseout="clo('orange')" onmouseup="setChakra(1)" src="Resources/Svadhishthana.png">
+        </img><br>
+
+        <img id="red" onmouseover="loc('red')" onmouseout="clo('red')" onmouseup="setChakra(0)" src="Resources/Muladhara.png">
+        </img>
     </section>
     <!--info-->
 
     <section id="info">
-        <div id="found" style="height:100px;width:100%"></div>
-        <div id="good" style="height:150px;float:left"></div>
-        <div id="bad" style="height:150px;float:right"></div>
-        <div id="frequency" style="height:50px;float:left"></div>
-        <div id="sense" style="height:50px;float:right"></div>
-        <div id="description" style="height:400px;width:100%;top:200px"></div>
+        <div id="found" style="height:35px;width:100%;float:left;font-size:20px"></div>
+        <div id="good" style="height:110px;float:left"></div>
+        <div id="bad" style="height:110px;float:right"></div>
+        <div id="description" style="height:260;width:100%;float:left"></div>
+        <div id="frequency" style="height:35px;float:left;font-size: 15px"></div>
+        <div id="sense" style="height:35px;float:right;font-size: 15px"></div>
     </section>
 
     <body>
