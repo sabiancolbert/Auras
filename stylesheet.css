@@ -30,7 +30,7 @@ section {
 #info {
     right: 25px;
     width: 200px;
-    padding: 80px 40px 40px 40px;
+    padding: 40px;
     border-radius: 250px;
     margin: auto;
     background: linear-gradient(45deg, #5501b6, #5501b606, transparent);
