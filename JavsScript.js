@@ -1,26 +1,29 @@
 class Chakra {
-    constructor(name, frequency, sense, good, bad, description) {
+    constructor(color, name, good, bad, description, frequency, sense) {
+        this.color = color;
         this.name = name;
-        this.frequency = frequency;
-        this.sense = sense;
         this.good = good;
         this.bad = bad;
         this.description = description;
+        this.frequency = frequency;
+        this.sense = sense;
     }
 }
 
 function $($) { return document.getElementById($); }
-window.onload = function () { adjust() }
-window.onresize = function () { adjust() }
+window.onload = function () { adjust(); setChakra(0); }
+window.onresize = function () { adjust(); }
+var currentChakra = 0;
 var runnning = false;
 var chakras = [
-    new Chakra("Muladhara: Root Chakra", "<i>396-432<br>Hz</i>", "<i>Smell</i>", "<strong>Safe<br>Calm<br>Secure</strong>", "<strong>Anxiety<br>Guilt<br>Fear</strong>", "Level with tailbone; Connection between you and your body, physical pleasure ,is the foundation for the other chakras, high good physical health, kow is frustration"),
-    new Chakra("Svadhishthana: Sacral Chakra", "<i>417-480<br>Hz</i>", "<i>Taste</i>", "<strong>Loving<br>Creative<br>Confident</strong>", "<strong>Addiction<br>Fakeness<br>Sensitive</strong>", "level with two inches under your belly button;Connection between you and your emotions, creative pleasure; you may put on a mask infront of others when low, determines your control over your emotions such as anger, relates to sexuality"),
-    new Chakra("Manipura: Solar Plexus Chakra", "<i>528<br>Hz</i>", "<i>Sight</i>", "<strong>Confident<br>Motivated<br>Powerful</strong>", "<strong>Insecure<br>Helpless<br>Controlling</strong>", "level with below the stomach pit;connects you with your confidence,  pleasure in accomplishments; maybe irresponsible when low, determines good judgement, helps you manifest your desires"),
-    new Chakra("Anahata: Heart Chakra", "<i>528-639<br>Hz</i>", "<i>Touch</i>", "<strong>Compassion<br>Kindness<br>Healing</strong>", "<strong>Loss<br>Regret<br>Pain</strong>", " level with the heart;is the connection with other people, pleasure in relationships;low self worth when low, power to give empathy and love,relationships rely on it"),
-    new Chakra("Vishuddha: Throat Chakra", "<i>639-741<br>Hz</i>", "<i>Hearing</i>", "<strong>Expressive<br>Honest<br>Open</strong>", "<strong>Fake<br>Gossip<br>Uncaring</strong>", "level with the throat ; connection between you and your expression , creativity in relationships;can be your writing, voice, or anything that expresses your ideas; involved with truth and fixing things; gives glear communication withougj misunderstanding "),
-    new Chakra("Ajna: Third Eye Chakra", "<i>720-852<br>Hz</i>", "<i>Non-bodily</i>", "<strong>Awareness<br>Wisdom<br>Logic</strong>", "<strong>Weak<br>Empty<br>Ignorance</strong>", "level with above the eyes;connects you, the soul, to the world, usually the source of an honest sixth sense;without it, your emotions and desires can better control you; Allows you to tap into your true intuition;"),
-    new Chakra("Sahasrara: Crown Chakra", "<i>768-963<br>Hz</i>", "<i>Non-bodily</i>", "<strong>Peace<br>Calm<br>Trust</strong>", "<strong>Meaningless<br>Impulsive<br>Addiction</strong>", "Above the head ;connects you to the spiritual, constitutes your awareness as a soul;relation to the greater,  you may live in the moment with bad, things seem to be ok with good, is associated with your self awareness as a being, helps relieve obsessions")];
+    new Chakra("black", "Chakras", "", "", "desc", "<i>396-963<br>Hz</i>", ""),
+    new Chakra("red", "Muladhara: Root Chakra", "<strong>Secure<br>Calm<br>Safe</strong>", "<strong>Fear<br>Guilt<br>Anxiety</strong>", "Found level with tailbone<br>Emits the Etheric Layer, extends 2 inches<br>Connection to the body, directly affects physical health<br>Connection to physical pleasure, when bad you may be irritable<br>Determines the well being/balance of the rest of the chakras", "<i>396-432<br>Hz</i>", "<i>Smell</i>"),
+    new Chakra("orange", "Svadhishthana: Sacral Chakra", "<strong>Confident<br>Creative<br>Loving</strong>", "<strong>Sensitive<br>Fakeness<br>Addiction</strong>", "Found two inches under the belly button<br>Emits the Emotional Layer, extends 3 inches from the body<br>Connection to emotions, when bad you may put on a social mask<br>Connection to creative pleasure, directly affects sexuality<br>Determines your control over your emotions such as anger", "<i>417-480<br>Hz</i>", "<i>Taste</i>"),
+    new Chakra("yellow", "Manipura: Solar Plexus Chakra", "<strong>Motivated<br>Confident<br>Powerful</strong>", "<strong>Helpless<br>Insecure<br>Controlling</strong>", "Found under the stomach pit<br>Emits the Mental Layer, found 3-8 inches from the body but expands<br>Connection to confidence, directly affects manifesting your desires<br>Connection to progressive pleasure, when bad you be be irresponsible<br>Determines good judgement", "<i>528<br>Hz</i>", "<i>Sight</i>"),
+    new Chakra("green", "Anahata: Heart Chakra", "<strong>Compassion<br>Kindness<br>Healing</strong>", "<strong>Pain<br>Loss<br>Regret</strong>", "Found level with the heart<br>Emits the Astral Layer, extends 6 inches from the body but can expand<br>Connection to people, directly affects relationships<br>Connection to social pleasure, when bad you may feel low self worth<br>Determines your power to give love and empathy", "<i>528-639<br>Hz</i>", "<i>Touch</i>"),
+    new Chakra("blue", "Vishuddha: Throat Chakra", "<strong>Expressive<br>Honest<br>Open</strong>", "<strong>Fake<br>Gossip<br>Uncaring</strong>", "Found level with the throat<br>Emits the Etheric Template, found as negative space for the Etheric Layer<br>Connection to expression, when bad you may be misunderstood<br>Connection to chivalric pleasure, directly affects your need for truth and fixing things<br>Determines how you speak and create", "<i>639-741<br>Hz</i>", "<i>Hearing</i>"),
+    new Chakra("purple", "Ajna: Third Eye Chakra", "<strong>Awareness<br>Wisdom<br>Logic</strong>", "<strong>Weak<br>Empty<br>Ignorance</strong>", "Found above the eyes<br>Emits the Celestial Layer, extends 2.5 feet<br>Connection to worldliness, when bad you may be controlled by impulse and emotion<br>Connection to sixth senses, directly affects your true intuition<br>Determines how you, the soul, interact with the world around you", "<i>720-852<br>Hz</i>", "<i>Non-bodily</i>"),
+    new Chakra("white", "Sahasrara: Crown Chakra", "<strong>Peace<br>Trust<br>Calm</strong>", "<strong>Addiction<br>Impulsive<br>Meaningless</strong>", "Found above the head<br>Emits the Spiritual Layer, extends 3 feet<br>Connection to non worldliness, when bad you may tend to live in the moment<br>Connection to self awareness, provides a sense of acceptance and trust<br>Determines how you, the soul, interact with the spiritual world", "<i>768-963<br>Hz</i>", "<i>Non-bodily</i>")];
 
 function adjust() {
     $("chakras").style.left = window.innerWidth / 3 - 370 + "px";
@@ -36,10 +39,13 @@ function clo(x) {
 }
 
 function setChakra(x) {
+    if (x == currentChakra) { x = 0 }
+    currentChakra = x;
+    $("header").style.color = chakras[x].color//here make chakras default text (notes) and a way to get ther after clicking a chakra
     $("header").innerHTML = chakras[x].name;
     $("good").innerHTML = chakras[x].good;
     $("bad").innerHTML = chakras[x].bad;
+    $("description").innerHTML = chakras[x].description;
     $("frequency").innerHTML = chakras[x].frequency;
     $("sense").innerHTML = chakras[x].sense;
-    $("description").innerHTML = chakras[x].description;
 }
