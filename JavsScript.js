@@ -9,6 +9,7 @@ class Chakra {
         this.sense = sense;
     }
 }
+var currentImg = "Resources/black.png";
 var currentChakra = 0;
 var chakras = [
     new Chakra("black", "Chakras", "<strong>Content<br>Healthy<br>Aware</strong>", "<strong>Lost<br>Empty<br>Unwell</strong>", "<li>The word chakra means 'spinning wheel', meant to represent the spinning funnels of energy pointing toward your body.<li>At best, each spins clockwise at a medium pace, exerting energy; Counter-clockwise to absorb it.<li>Each one has a healthy frequency range.<li>The frequency determines the speed, and therefore health of the chakra.", "<i>396-963<br>Hz</i>", ""),
@@ -20,7 +21,15 @@ var chakras = [
     new Chakra("purple", "Ajna: Third Eye Chakra", "<strong>Awareness<br>Wisdom<br>Logic</strong>", "<strong>Weak<br>Empty<br>Ignorance</strong>", "<li>Found above the eyes.<li>Emits the <strong>Celestial Layer</strong>, extends 2.5 feet.<li>Connection to worldliness, when low you may be controlled by impulse and emotion.<li>Connection to sixth senses, directly affects your true intuition.<li>Determines how you, the soul, interact with the world around you.", "<i>720-852<br>Hz</i>", "<i>Non-bodily</i>"),
     new Chakra("white", "Sahasrara: Crown Chakra", "<strong>Peace<br>Trust<br>Calm</strong>", "<strong>Addiction<br>Impulsive<br>Meaningless</strong>", "<li>Found above the head.<li>Emits the <strong>Spiritual Layer</strong>, extends 3 feet.<li>Connection to non worldliness, when low you may tend to live in the moment.<li>Connection to self awareness, provides a sense of acceptance and trust.<li>Determines how you, the soul, interact with the spiritual world.", "<i>768-963<br>Hz</i>", "<i>Non-bodily</i>")
 ];
-window.onload = function () { adjust(); setChakra(0); }
+window.onload = function () {
+    adjust(); $("header").style.color = chakras[0].color
+    $("header").innerHTML = chakras[0].name;
+    $("good").innerHTML = chakras[0].good;
+    $("bad").innerHTML = chakras[0].bad;
+    $("description").innerHTML = chakras[0].description;
+    $("frequency").innerHTML = chakras[0].frequency;
+    $("sense").innerHTML = chakras[0].sense;
+}
 window.onresize = function () { adjust(); }
 function $($) { return document.getElementById($); }
 
@@ -34,8 +43,6 @@ function adjust() {
 function setChakra(x) {
     //revert to default information if same chakra was selected
     if (x == currentChakra) { x = 0 }
-    //remember new chakra for previous step
-    currentChakra = x;
     //display determined information
     $("header").style.color = chakras[x].color
     $("header").innerHTML = chakras[x].name;
@@ -44,4 +51,37 @@ function setChakra(x) {
     $("description").innerHTML = chakras[x].description;
     $("frequency").innerHTML = chakras[x].frequency;
     $("sense").innerHTML = chakras[x].sense;
+    //change active chakra display
+    {
+        //necessary to clarify for javascript
+        $(x).style.width = "70px";
+        $(currentChakra).style.width = "70px";
+        //shrink animation
+        var animation = setInterval(() => {
+            if ($(x).style.width == "0px") {
+                clearInterval(animation);
+                //change displays
+                $(currentChakra).src = currentImg;
+                currentImg = $(x).src;
+                $(x).src = "Resources/black.png";
+                //grow animation
+                var animation2 = setInterval(() => {
+                    if ($(x).style.width == "70px") {
+                        //done
+                        clearInterval(animation2);
+                        //remember new chakra
+                        currentChakra = x;
+                    }
+                    else {
+                        $(x).style.width = parseInt($(x).style.width.substring(0, $(x).style.width.length - 2)) + 2 + "px";
+                        $(currentChakra).style.width = parseInt($(currentChakra).style.width.substring(0, $(currentChakra).style.width.length - 2)) + 2 + "px";
+                    }
+                }, 1);
+            }
+            else {
+                $(x).style.width = $(x).style.width.substring(0, $(x).style.width.length - 2) - 2 + "px";
+                $(currentChakra).style.width = $(currentChakra).style.width.substring(0, $(currentChakra).style.width.length - 2) - 2 + "px";
+            }
+        }, 1);
+    }
 }
