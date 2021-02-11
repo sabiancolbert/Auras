@@ -47,6 +47,7 @@ function setChakra(x) {
     //revert to default information if same chakra was selected
     if (x == currentChakra) { x = 0 }
     //display determined information
+    $("i").style.borderColor = chakras[x].color;
     $("i").style.color = chakras[x].color;
     $("header").style.color = chakras[x].color
     $("header").innerHTML = chakras[x].name;
