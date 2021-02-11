@@ -11,7 +11,7 @@ class Chakra {
 }
 var currentChakra = 0;
 var chakras = [
-    new Chakra("black", "Chakras", "", "", "<li>The word chakra means 'spinning wheel', meant to represent the spinning funnels of energy pointing toward your body.<li>At best, each spins clockwise at a medium pace, exerting energy; Counter-clockwise to absorb it.<li>Each one has a healthy frequency range.<li>The frequency determines the speed, and therefore health of the chakra.", "<i>396-963<br>Hz</i>", ""),
+    new Chakra("black", "Chakras", "<strong>Content<br>Healthy<br>Aware</strong>", "<strong>Lost<br>Empty<br>Unwell</strong>", "<li>The word chakra means 'spinning wheel', meant to represent the spinning funnels of energy pointing toward your body.<li>At best, each spins clockwise at a medium pace, exerting energy; Counter-clockwise to absorb it.<li>Each one has a healthy frequency range.<li>The frequency determines the speed, and therefore health of the chakra.", "<i>396-963<br>Hz</i>", ""),
     new Chakra("red", "Muladhara: Root Chakra", "<strong>Secure<br>Calm<br>Safe</strong>", "<strong>Fear<br>Guilt<br>Anxiety</strong>", "<li>Found level with tailbone.<li>Emits the <strong>Etheric Layer</strong>, extends 2 inches.<li>Connection to the body, directly affects physical health.<li>Connection to physical pleasure, when low you may be irritable.<li>Determines the well being/balance of the rest of the chakras.", "<i>396-432<br>Hz</i>", "<i>Smell</i>"),
     new Chakra("orange", "Svadhishthana: Sacral Chakra", "<strong>Confident<br>Creative<br>Loving</strong>", "<strong>Sensitive<br>Fakeness<br>Addiction</strong>", "<li>Found two inches under the belly button.<li>Emits the <strong>Emotional Layer</strong>, extends 3 inches from the body.<li>Connection to emotions, when low you may put on a social mask.<li>Connection to creative pleasure, directly affects sexuality.<li>Determines your control over your emotions such as anger.", "<i>417-480<br>Hz</i>", "<i>Taste</i>"),
     new Chakra("yellow", "Manipura: Solar Plexus Chakra", "<strong>Motivated<br>Confident<br>Powerful</strong>", "<strong>Helpless<br>Insecure<br>Controlling</strong>", "<li>Found under the stomach pit.<li>Emits the <strong>Mental Layer</strong>, found 3-8 inches from the body but expands.<li>Connection to confidence, directly affects manifesting your desires.<li>Connection to progressive pleasure, when low you may be irresponsible.<li>Determines good judgement.", "<i>528<br>Hz</i>", "<i>Sight</i>"),
@@ -26,7 +26,7 @@ function $($) { return document.getElementById($); }
 
 //keep important items visible on resizing
 function adjust() {
-    $("chakras").style.left = window.innerWidth / 3 - 370 + "px";
+    $("chakras").style.left = window.innerWidth / 3 - 350 + "px";
     $("info").style.right = window.innerWidth / 3 - 100 + "px";
 }
 
