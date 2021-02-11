@@ -22,7 +22,10 @@ var chakras = [
     new Chakra("white", "Sahasrara: Crown Chakra", "<strong>Peace<br>Trust<br>Calm</strong>", "<strong>Addiction<br>Impulsive<br>Meaningless</strong>", "<li>Found above the head.<li>Emits the <strong>Spiritual Layer</strong>, extends 3 feet.<li>Connection to non worldliness, when low you may tend to live in the moment.<li>Connection to self awareness, provides a sense of acceptance and trust.<li>Determines how you, the soul, interact with the spiritual world.", "<i>768-963<br>Hz</i>", "<i>Non-bodily</i>")
 ];
 window.onload = function () {
-    adjust(); $("header").style.color = chakras[0].color
+    adjust();
+    //use JavaScript for these so changes made only have to be made in the Chakras[] array
+    $("i").style.color = chakras[0].color;
+    $("header").style.color = chakras[0].color
     $("header").innerHTML = chakras[0].name;
     $("good").innerHTML = chakras[0].good;
     $("bad").innerHTML = chakras[0].bad;
@@ -44,6 +47,7 @@ function setChakra(x) {
     //revert to default information if same chakra was selected
     if (x == currentChakra) { x = 0 }
     //display determined information
+    $("i").style.color = chakras[x].color;
     $("header").style.color = chakras[x].color
     $("header").innerHTML = chakras[x].name;
     $("good").innerHTML = chakras[x].good;
@@ -84,4 +88,7 @@ function setChakra(x) {
             }
         }, 1);
     }
+}
+function hover(element, x) {
+    $(element).style.width = x;
 }
