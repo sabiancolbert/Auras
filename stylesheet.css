@@ -2,10 +2,10 @@ body {
     background: linear-gradient(170deg, #00b4b4, #f8d3fd);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    margin: none;
 }
 
 header {
+    opacity: 60%;
     height: 100px;
     font-size: 40px;
     font-weight: bold;
@@ -28,11 +28,10 @@ section {
 
 #info {
     height: fit-content;
-    width: 200px;
+    width: 210px;
     padding: 20px;
     border-radius: 250px;
     background: linear-gradient(0deg, #5501b6ee, #5501b699, #5501b633, transparent, transparent);
-    margin: auto;
 }
 
 div {
@@ -46,6 +45,7 @@ button {
     width: 20px;
     border-radius: 100%;
     border-color: black;
+    text-align: center;
     background: none;
     margin: auto;
     position: absolute;

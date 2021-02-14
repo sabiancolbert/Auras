@@ -19,7 +19,7 @@
     <!--chakras-->
 
     <section id="chakras">
-        <img id="7" src="Resources/Sahasrara.png" onmouseup="setChakra(7)" onmouseover="hover('7', '60px')">
+        <img id="7" src="Resources/Sahasrara.png" onmouseup="setChakra(7)">
         <br>
         <img id="6" onmouseup="setChakra(6)" src="Resources/Ajna.png">
         <br>
@@ -32,15 +32,16 @@
         <img id="2" onmouseup="setChakra(2)" src="Resources/Svadhishthana.png">
         <br>
         <img id="1" onmouseup="setChakra(1)" src="Resources/Muladhara.png">
+        <img hidden id="8" src="Resources/black.png">
         <img hidden id="0" src="Resources/black.png">
     </section>
     <!--info-->
 
     <section id="info">
-        <button id="i"><strong>i</strong></button>
+        <button id="i" onmouseup="setChakra(8)"><strong>i</strong></button>
         <div id="good" style="font-size: 20px;height:110px;color:#02a31d;float:left;text-align:left"></div>
         <div id="bad" style="font-size: 20px;height:110px;color:rgb(172, 0, 0);float:right;text-align:right"></div>
-        <div id="description" style="font-size: 25px;height:260;color:#222222;float:left;width:100%;margin-bottom:40px"></div>
+        <div id="details" style="font-size: 25px;height:260;text-shadow: 2px 2px #777777;float:left;width:100%;margin-bottom:40px"></div>
         <div id="frequency" style="font-size: 15px;height:35px;bottom:25px;position:absolute"></div>
         <div id="sense" style="font-size: 15px;height:35px;bottom:25px;position:absolute;right:20px"></div>
     </section>

@@ -1,14 +1,15 @@
 class Chakra {
-    constructor(color, name, good, bad, description, frequency, sense) {
+    constructor(color, name, good, bad, details, frequency, sense) {
         this.color = color;
         this.name = name;
         this.good = good;
         this.bad = bad;
-        this.description = description;
+        this.details = details;
         this.frequency = frequency;
         this.sense = sense;
     }
 }
+var active = 0;
 var currentImg = "Resources/black.png";
 var currentChakra = 0;
 var chakras = [
@@ -21,17 +22,12 @@ var chakras = [
     new Chakra("purple", "Ajna: Third Eye Chakra", "<strong>Awareness<br>Wisdom<br>Logic</strong>", "<strong>Weak<br>Empty<br>Ignorance</strong>", "<li>Found above the eyes.<li>Emits the <strong>Celestial Layer</strong>, extends 2.5 feet.<li>Connection to worldliness, when low you may be controlled by impulse and emotion.<li>Connection to sixth senses, directly affects your true intuition.<li>Determines how you, the soul, interact with the world around you.", "<i>720-852<br>Hz</i>", "<i>Non-bodily</i>"),
     new Chakra("white", "Sahasrara: Crown Chakra", "<strong>Peace<br>Trust<br>Calm</strong>", "<strong>Addiction<br>Impulsive<br>Meaningless</strong>", "<li>Found above the head.<li>Emits the <strong>Spiritual Layer</strong>, extends 3 feet.<li>Connection to non worldliness, when low you may tend to live in the moment.<li>Connection to self awareness, provides a sense of acceptance and trust.<li>Determines how you, the soul, interact with the spiritual world.", "<i>768-963<br>Hz</i>", "<i>Non-bodily</i>")
 ];
+
+
 window.onload = function () {
+    //set page
     adjust();
-    //use JavaScript for these so changes made only have to be made in the Chakras[] array
-    $("i").style.color = chakras[0].color;
-    $("header").style.color = chakras[0].color
-    $("header").innerHTML = chakras[0].name;
-    $("good").innerHTML = chakras[0].good;
-    $("bad").innerHTML = chakras[0].bad;
-    $("description").innerHTML = chakras[0].description;
-    $("frequency").innerHTML = chakras[0].frequency;
-    $("sense").innerHTML = chakras[0].sense;
+    setChakra(0);
 }
 window.onresize = function () { adjust(); }
 function $($) { return document.getElementById($); }
@@ -42,54 +38,98 @@ function adjust() {
     $("info").style.right = window.innerWidth / 3 - 100 + "px";
 }
 
-//change displayed information
+//change display
 function setChakra(x) {
-    //revert to default information if same chakra was selected
-    if (x == currentChakra) { x = 0 }
-    //display determined information
-    $("i").style.borderColor = chakras[x].color;
-    $("i").style.color = chakras[x].color;
-    $("header").style.color = chakras[x].color
-    $("header").innerHTML = chakras[x].name;
-    $("good").innerHTML = chakras[x].good;
-    $("bad").innerHTML = chakras[x].bad;
-    $("description").innerHTML = chakras[x].description;
-    $("frequency").innerHTML = chakras[x].frequency;
-    $("sense").innerHTML = chakras[x].sense;
-    //change active chakra display
-    {
-        //necessary to clarify for javascript
-        $(x).style.width = "70px";
-        $(currentChakra).style.width = "70px";
-        //shrink animation
-        var animation = setInterval(() => {
-            if ($(x).style.width == "0px") {
-                clearInterval(animation);
-                //change displays
-                $(currentChakra).src = currentImg;
-                currentImg = $(x).src;
-                $(x).src = "Resources/black.png";
-                //grow animation
-                var animation2 = setInterval(() => {
-                    if ($(x).style.width == "70px") {
-                        //done
-                        clearInterval(animation2);
-                        //remember new chakra
-                        currentChakra = x;
-                    }
-                    else {
-                        $(x).style.width = parseInt($(x).style.width.substring(0, $(x).style.width.length - 2)) + 2 + "px";
-                        $(currentChakra).style.width = parseInt($(currentChakra).style.width.substring(0, $(currentChakra).style.width.length - 2)) + 2 + "px";
-                    }
-                }, 1);
-            }
-            else {
-                $(x).style.width = $(x).style.width.substring(0, $(x).style.width.length - 2) - 2 + "px";
-                $(currentChakra).style.width = $(currentChakra).style.width.substring(0, $(currentChakra).style.width.length - 2) - 2 + "px";
-            }
-        }, 1);
+    if (x == currentChakra) {
+        x = 0;
     }
+    currentChakra = x;
+    //perform animation
+    //necessary to clarify for later code to work
+    $("info").style.width = "210px";
+    $("8").style.width = "70px";
+    $("7").style.width = "70px";
+    $("6").style.width = "70px";
+    $("5").style.width = "70px";
+    $("4").style.width = "70px";
+    $("3").style.width = "70px";
+    $("2").style.width = "70px";
+    $("1").style.width = "70px";
+    $("0").style.width = "70px";
+    flip(x);
 }
-function hover(element, x) {
-    $(element).style.width = x;
+
+//flip items over
+function flip(x) {
+    C("flip");
+    active++;
+    C("active " + active);
+    //shrink
+    var animationc = setInterval(() => {
+        C("shrink");
+        //if shrink animation is done
+        if ($(x).style.width == "0px" && active == 1) {
+            active--;
+            C("shrink done");
+            clearInterval(animationc);
+            //set info
+            C("set info");
+            $("i").style.borderColor = chakras[x].color;
+            $("i").style.color = chakras[x].color;
+            $("header").style.color = chakras[x].color
+            $("header").innerHTML = chakras[x].name;
+            $("good").innerHTML = chakras[x].good;
+            $("bad").innerHTML = chakras[x].bad;
+            $("details").innerHTML = chakras[x].details;
+            $("frequency").innerHTML = chakras[x].frequency;
+            $("sense").innerHTML = chakras[x].sense;
+            //here determine set to black or set to chakra
+
+            //expand $x
+            C("expand, active " + active);
+            active++;
+            var animationd = setInterval(() => {
+                C("expand, active " + active);
+                //if expand animation is done
+                if ($(x).style.width == "70px" && active == 1) {
+                    active--;
+                    C("expand done");
+                    clearInterval(animationd);
+                }
+                //if expand animation is not done
+                else if (active == 1) {
+                    C("expand continue");
+                    C("expand, active " + active);
+                    $(x).style.width = parseInt($(x).style.width.substring(0, $(x).style.width.length - 2)) + 2 + "px";
+                    $("info").style.width = parseInt($("info").style.width.substring(0, $("info").style.width.length - 2)) + 6 + "px";
+                }
+                //if different animation started (cancel expand animation)
+                else {
+                    active--;
+                    clearInterval(animationd);
+                    C("EXPAND CANCEL");
+                    C("expand, active " + active);
+                }
+            }, 10);
+        }
+        //if shrink animation is not done
+        else if (active == 1) {
+            C("shrink continue")
+            $(x).style.width = $(x).style.width.substring(0, $(x).style.width.length - 2) - 2 + "px";
+            C(x + " " + $(x).style.width);
+            $("info").style.width = $("info").style.width.substring(0, $("info").style.width.length - 2) - 6 + "px";
+            C("info " + $("info").style.width);
+        }
+        //if different animation started (cancel shrink animation)
+        else {
+            active--;
+            C("SHRINK CANCEL")
+            clearInterval(animationc);
+        }
+    }, 10);
+    C("flip done");
+}
+
+function C(C = "C") {
+    console.log(C);
 }
