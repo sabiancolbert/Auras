@@ -59,6 +59,26 @@ function setChakra(x) {
     flip(x);
 }
 
+
+//animate a slight tilt
+function over(x) {
+    active++;
+    var animationa = setInterval(() => {
+        if ($(x).style.width == "60px" || active != 1) {
+            active--;
+            clearInterval(animationa);
+        }
+        else {
+            $(x).style.width = $(x).style.width.substring(0, $(x).style.width.length - 2) - 2 + "px";
+        }
+    }, 10);
+}
+
+//animate a slight un-tilt
+function out(x) {
+    $(x).ro
+}
+
 //flip items over
 function flip(x) {
     C("flip");
@@ -83,7 +103,8 @@ function flip(x) {
             $("details").innerHTML = chakras[x].details;
             $("frequency").innerHTML = chakras[x].frequency;
             $("sense").innerHTML = chakras[x].sense;
-            //here determine set to black or set to chakra
+            //here determine set to black or set to chakra or set with top wider (for $i)
+            //dontforget to animate filipping the old chakra back when x = 0
 
             //expand $x
             C("expand, active " + active);

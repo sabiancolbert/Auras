@@ -58,3 +58,7 @@ img {
     margin-bottom: 32px;
     position: relative;
 }
+
+img:hover {
+    transform: rotate(-20deg);
+}
