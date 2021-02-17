@@ -28,6 +28,7 @@ window.onload = function () {
     //set page
     setChakra(0);
     adjust();
+    //to make mobile size correctly
     onscroll();
 }
 window.onresize = function () { adjust(); }
@@ -45,7 +46,6 @@ function setChakra(x) {
         x = 0;
     }
     currentChakra = x;
-    //perform animation
     //necessary to clarify for later code to work
     $("info").style.width = "210px";
     $("8").style.width = "70px";
@@ -57,6 +57,7 @@ function setChakra(x) {
     $("2").style.width = "70px";
     $("1").style.width = "70px";
     $("0").style.width = "70px";
+    //perform animation
     flip(x);
 }
 
