@@ -27,6 +27,7 @@ section {
 }
 
 #info {
+    z-index: 2;
     height: fit-content;
     width: 210px;
     padding: 20px;

@@ -20,7 +20,8 @@ var chakras = [
     new Chakra("green", "Anahata: Heart Chakra", "<strong>Compassion<br>Kindness<br>Healing</strong>", "<strong>Pain<br>Loss<br>Regret</strong>", "<li>Found level with the heart.<li>Emits the <strong>Astral Layer</strong>, extends 6 inches from the body but can expand.<li>Connection to people, directly affects relationships.<li>Connection to social pleasure, when low you may feel low self worth.<li>Determines your power to give love and empathy.", "<i>528-639<br>Hz</i>", "<i>Touch</i>"),
     new Chakra("blue", "Vishuddha: Throat Chakra", "<strong>Expressive<br>Honest<br>Open</strong>", "<strong>Fake<br>Gossip<br>Uncaring</strong>", "<li>Found level with the throat.<li>Emits the Etheric Template, found as <strong>negative space for the Etheric Layer</strong>.<li>Connection to expression, when low you may be misunderstood.<li>Connection to chivalric pleasure, directly affects your need for truth and fixing things.<li>Determines how you speak and create.", "<i>639-741<br>Hz</i>", "<i>Hearing</i>"),
     new Chakra("purple", "Ajna: Third Eye Chakra", "<strong>Awareness<br>Wisdom<br>Logic</strong>", "<strong>Weak<br>Empty<br>Ignorance</strong>", "<li>Found above the eyes.<li>Emits the <strong>Celestial Layer</strong>, extends 2.5 feet.<li>Connection to worldliness, when low you may be controlled by impulse and emotion.<li>Connection to sixth senses, directly affects your true intuition.<li>Determines how you, the soul, interact with the world around you.", "<i>720-852<br>Hz</i>", "<i>Non-bodily</i>"),
-    new Chakra("white", "Sahasrara: Crown Chakra", "<strong>Peace<br>Trust<br>Calm</strong>", "<strong>Addiction<br>Impulsive<br>Meaningless</strong>", "<li>Found above the head.<li>Emits the <strong>Spiritual Layer</strong>, extends 3 feet.<li>Connection to non worldliness, when low you may tend to live in the moment.<li>Connection to self awareness, provides a sense of acceptance and trust.<li>Determines how you, the soul, interact with the spiritual world.", "<i>768-963<br>Hz</i>", "<i>Non-bodily</i>")
+    new Chakra("white", "Sahasrara: Crown Chakra", "<strong>Peace<br>Trust<br>Calm</strong>", "<strong>Addiction<br>Impulsive<br>Meaningless</strong>", "<li>Found above the head.<li>Emits the <strong>Spiritual Layer</strong>, extends 3 feet.<li>Connection to non worldliness, when low you may tend to live in the moment.<li>Connection to self awareness, provides a sense of acceptance and trust.<li>Determines how you, the soul, interact with the spiritual world.", "<i>768-963<br>Hz</i>", "<i>Non-bodily</i>"),
+    new Chakra("info", "Description", "", "", "", "", "")
 ];
 
 
@@ -37,15 +38,33 @@ function $($) { return document.getElementById($); }
 //keep important items visible on resizing
 function adjust() {
     $("chakras").style.left = window.innerWidth / 3 - 350 + "px";
-    $("info").style.right = window.innerWidth / 3 - 100 + "px";
+    if (currentChakra != 8) {
+        $("info").style.right = window.innerWidth / 3 - 100 + "px";
+    } else {
+        $("info").style.right = "2%";
+    }
 }
 
 //change display
 function setChakra(x) {
-    if (x == currentChakra) {
-        x = 0;
+    if (x == 8) {
+        $("7").hidden = true;
+        $("6").hidden = true;
+        $("5").hidden = true;
+        $("4").hidden = true;
+        $("3").hidden = true;
+        $("2").hidden = true;
+        $("1").hidden = true;
     }
-    currentChakra = x;
+    else {
+        $("7").hidden = false;
+        $("6").hidden = false;
+        $("5").hidden = false;
+        $("4").hidden = false;
+        $("3").hidden = false;
+        $("2").hidden = false;
+        $("1").hidden = false;
+    }
     //necessary to clarify for later code to work
     $("info").style.width = "210px";
     $("8").style.width = "70px";
@@ -83,46 +102,64 @@ function out(x) {
 
 //flip items over
 function flip(x) {
-    C("flip");
     active++;
-    C("active " + active);
     //shrink
     var animationc = setInterval(() => {
-        C("shrink");
         //if shrink animation is done
         if ($(x).style.width == "0px" && active == 1) {
             active--;
-            C("shrink done");
             clearInterval(animationc);
             //set info
+            C("start:" + x + "," + currentChakra + "," + currentImg);
+            var set = x;
+            if (x == currentChakra) {
+                //if to default "chakra"
+                set = 0;
+                currentChakra = 0;
+                $(x).src = currentImg;
+            }
+            else if (currentChakra == 0) {
+                //if from default "chakra"
+                currentImg = $(x).src;
+                $(x).src = "Resources/black.png";
+                currentChakra = x;
+            }
+            else {
+                //if from a chakra
+                $(currentChakra).src = currentImg;
+                currentImg = $(x).src;
+                $(x).src = "Resources/black.png";
+                currentChakra = x;
+            }
+            $("header").innerHTML = chakras[set].name;
+            $("good").innerHTML = chakras[set].good;
+            $("bad").innerHTML = chakras[set].bad;
+            $("details").innerHTML = chakras[set].details;
+            $("frequency").innerHTML = chakras[set].frequency;
+            $("sense").innerHTML = chakras[set].sense;
             C("set info");
-            $("i").style.borderColor = chakras[x].color;
-            $("i").style.color = chakras[x].color;
-            $("header").style.color = chakras[x].color
-            $("header").innerHTML = chakras[x].name;
-            $("good").innerHTML = chakras[x].good;
-            $("bad").innerHTML = chakras[x].bad;
-            $("details").innerHTML = chakras[x].details;
-            $("frequency").innerHTML = chakras[x].frequency;
-            $("sense").innerHTML = chakras[x].sense;
-            //here determine set to black or set to chakra or set with top wider (for $i)
-            //dontforget to animate filipping the old chakra back when x = 0
+            if (x != 8) {
+                $("i").style.borderColor = chakras[set].color;
+                $("i").style.color = chakras[set].color;
+                $("header").style.color = chakras[set].color;
+            }
 
             //expand $x
-            C("expand, active " + active);
             active++;
             var animationd = setInterval(() => {
-                C("expand, active " + active);
                 //if expand animation is done
                 if ($(x).style.width == "70px" && active == 1) {
                     active--;
-                    C("expand done");
                     clearInterval(animationd);
+                    if (x == 8) {
+                        //here make this gradual (combine it with the "continuing animation" block below)
+                        $("info").style.width = "87%";
+                        $("info").style.right = "2%";
+                    }
+                    adjust();
                 }
                 //if expand animation is not done
                 else if (active == 1) {
-                    C("expand continue");
-                    C("expand, active " + active);
                     $(x).style.width = parseInt($(x).style.width.substring(0, $(x).style.width.length - 2)) + 2 + "px";
                     $("info").style.width = parseInt($("info").style.width.substring(0, $("info").style.width.length - 2)) + 6 + "px";
                 }
@@ -130,27 +167,20 @@ function flip(x) {
                 else {
                     active--;
                     clearInterval(animationd);
-                    C("EXPAND CANCEL");
-                    C("expand, active " + active);
                 }
             }, 10);
         }
         //if shrink animation is not done
         else if (active == 1) {
-            C("shrink continue")
             $(x).style.width = $(x).style.width.substring(0, $(x).style.width.length - 2) - 2 + "px";
-            C(x + " " + $(x).style.width);
             $("info").style.width = $("info").style.width.substring(0, $("info").style.width.length - 2) - 6 + "px";
-            C("info " + $("info").style.width);
         }
         //if different animation started (cancel shrink animation)
         else {
             active--;
-            C("SHRINK CANCEL")
             clearInterval(animationc);
         }
     }, 10);
-    C("flip done");
 }
 
 function C(C = "C") {
