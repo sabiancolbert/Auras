@@ -168,7 +168,7 @@ function flip(x) {
                     active--;
                     clearInterval(animationd);
                 }
-            }, 10);
+            }, 3);
         }
         //if shrink animation is not done
         else if (active == 1) {
@@ -180,7 +180,7 @@ function flip(x) {
             active--;
             clearInterval(animationc);
         }
-    }, 10);
+    }, 3);
 }
 
 function C(C = "C") {
