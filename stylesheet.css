@@ -40,30 +40,21 @@ div {
 }
 
 button {
-    background: none;
-    border: none;
-    border-radius: 100%;
-    z-index: 1;
-    height: 70px;
-    width: 70px;
-    margin-bottom: 39px;
-    position: relative;
-    text-align: center;
-}
-
-button:hover {
-    transform: rotate(-20deg);
-}
-
-button:active {
-    transform: none;
-    border: none;
-}
-
-#i {
     top: 0;
     height: 20px;
     width: 20px;
+    border-radius: 100%;
+    border-color: black;
+    text-align: center;
+    background: none;
     margin: auto;
     position: absolute;
+}
+
+img {
+    z-index: 1;
+    height: 70px;
+    width: 70px;
+    margin-bottom: 32px;
+    position: relative;
 }

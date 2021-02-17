@@ -28,6 +28,7 @@ window.onload = function () {
     //set page
     setChakra(0);
     adjust();
+    onscroll();
 }
 window.onresize = function () { adjust(); }
 function $($) { return document.getElementById($); }
