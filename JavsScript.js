@@ -26,11 +26,12 @@ var chakras = [
 
 
 window.onload = function () {
-    //set page
-    setChakra(0);
+    //size page
     adjust();
     //to make mobile size correctly
     onscroll();
+    //set page
+    setChakra(0);
 }
 window.onresize = function () { adjust(); }
 function $($) { return document.getElementById($); }
