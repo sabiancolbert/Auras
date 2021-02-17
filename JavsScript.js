@@ -26,8 +26,8 @@ var chakras = [
 
 window.onload = function () {
     //set page
-    adjust();
     setChakra(0);
+    adjust();
 }
 window.onresize = function () { adjust(); }
 function $($) { return document.getElementById($); }
