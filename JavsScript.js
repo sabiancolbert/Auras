@@ -9,7 +9,9 @@ class Chakra {
         this.sense = sense;
     }
 }
+//to prevent animation compounding
 var active = 0;
+//to properly switch chakras
 var currentImg = "Resources/black.png";
 var currentChakra = 0;
 var chakras = [
@@ -38,17 +40,19 @@ function $($) { return document.getElementById($); }
 
 //keep important items visible on resizing
 function adjust() {
-    $("chakras").style.left = window.innerWidth / 3 - 350 + "px";
-    if (currentChakra != 8) {
-        $("info").style.right = window.innerWidth / 3 - 100 + "px";
-    } else {
-        $("info").style.right = "2%";
+    if (active == 0) {
+        $("chakras").style.left = window.innerWidth / 3 - 350 + "px";
+        if (currentChakra != 8) {
+            $("info").style.right = window.innerWidth / 3 - 100 + "px";
+        } else {
+            $("info").style.right = "2%";
+        }
     }
 }
 
 //change display
 function setChakra(x) {
-    if (x == 8) {
+    if (x == 8 && currentChakra != 8) {
         $("7").hidden = true;
         $("6").hidden = true;
         $("5").hidden = true;
@@ -67,7 +71,7 @@ function setChakra(x) {
         $("1").hidden = false;
     }
     //necessary to clarify for later code to work
-    $("info").style.width = "210px";
+    $("info").style.right = "2%";
     $("8").style.width = "70px";
     $("7").style.width = "70px";
     $("6").style.width = "70px";
@@ -104,10 +108,12 @@ function out(x) {
 //flip items over
 function flip(x) {
     active++;
-    $("info").style.height = "750px";
+    var oldChakra = currentChakra;
+
     //shrink
-    var animationc = setInterval(() => {
-        //if shrink animation is done
+    $("info").style.right = window.innerWidth / 3 - 100 + "px";
+    var animationc = setInterval(() => {//here substring function for readbility
+        //if shrink animation is done ($info is off screen)
         if ($(x).style.width == "0px" && active == 1) {
             active--;
             clearInterval(animationc);
@@ -148,6 +154,7 @@ function flip(x) {
 
             //expand $x
             active++;
+            $("info").style.right = "-210px";//here
             var animationd = setInterval(() => {
                 //if expand animation is done
                 if ($(x).style.width == "70px" && active == 1) {
@@ -156,7 +163,7 @@ function flip(x) {
                     $("info").style.height = "fit-content";
                     if (x == 8) {
                         //here make this gradual (combine it with the "continuing animation" block below)
-                        $("info").style.width = "87%";
+                        //taken out for right vs width; $("info").style.width = "87%";
                         $("info").style.right = "2%";
                     }
                     adjust();
@@ -164,7 +171,10 @@ function flip(x) {
                 //if expand animation is not done
                 else if (active == 1) {
                     $(x).style.width = parseInt($(x).style.width.substring(0, $(x).style.width.length - 2)) + 2 + "px";
-                    $("info").style.width = parseInt($("info").style.width.substring(0, $("info").style.width.length - 2)) + 6 + "px";
+                    if (oldChakra != x) {
+                        $(oldChakra).style.width = parseInt($(oldChakra).style.width.substring(0, $(oldChakra).style.width.length - 2)) + 2 + "px";
+                    }
+                    $("info").style.right = parseInt($("info").style.right.substring(0, $("info").style.right.length - 2)) - 1 + "px";
                 }
                 //if different animation started (cancel expand animation)
                 else {
@@ -176,7 +186,10 @@ function flip(x) {
         //if shrink animation is not done
         else if (active == 1) {
             $(x).style.width = $(x).style.width.substring(0, $(x).style.width.length - 2) - 2 + "px";
-            $("info").style.width = $("info").style.width.substring(0, $("info").style.width.length - 2) - 6 + "px";
+            if (oldChakra != x) {
+                $(oldChakra).style.width = $(oldChakra).style.width.substring(0, $(oldChakra).style.width.length - 2) - 2 + "px";
+            }
+            $("info").style.right = $("info").style.right.substring(0, $("info").style.right.length - 2) + 1 + "px";
         }
         //if different animation started (cancel shrink animation)
         else {
@@ -184,6 +197,7 @@ function flip(x) {
             clearInterval(animationc);
         }
     }, 3);
+    adjust();
 }
 
 function C(C = "C") {

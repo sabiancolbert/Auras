@@ -27,11 +27,12 @@ section {
 }
 
 #info {
+    overflow-y: hidden;
     z-index: 2;
     height: fit-content;
     width: 210px;
     padding: 20px;
-    border-radius: 250px;
+    border-radius: 0 0 250px 250px;
     background: linear-gradient(0deg, #5501b6ee, #5501b699, #5501b633, transparent, transparent);
 }
 
