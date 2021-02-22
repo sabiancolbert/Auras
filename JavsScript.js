@@ -12,6 +12,8 @@ class Chakra {
         this.description = description;
     }
 }
+//to fix mobile layout
+var flushed = 0;
 //to prevent animation compounding
 var active = 0;
 //to switch chakras
@@ -52,9 +54,6 @@ window.onload = function () {
     $("0").style.width = "70px";
     //set page
     setChakra(0);
-    //to fix mobile layout
-    setChakra(8);
-    setChakra(8);
 }
 
 //keep important things visible for different window sizes
@@ -209,6 +208,11 @@ function setChakra(chakra) {
                         oldChakra = set;
                     }
                     window.onresize();
+                    //to make mobile load properly (onLoad())
+                    if (flushed < 2) {
+                        flushed++;
+                        setChakra(8);
+                    }
                 }
             }, 3);
         }
