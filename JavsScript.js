@@ -53,7 +53,8 @@ window.onload = function () {
     //set page
     setChakra(0);
     //to fix mobile layout
-    window.onresize();
+    setChakra(8);
+    setChakra(8);
 }
 
 //keep important things visible for different window sizes
