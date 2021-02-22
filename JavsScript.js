@@ -52,7 +52,7 @@ window.onload = function () {
     $("0").style.width = "70px";
     //set page
     setChakra(0);
-    scroll();
+    window.onresize();
 }
 
 //keep important things visible for different window sizes
