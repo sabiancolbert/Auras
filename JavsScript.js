@@ -9,14 +9,13 @@ class Chakra {
         this.details = details;
         this.frequency = frequency;
         this.sense = sense;
-        this.description = "description";
+        this.description = "description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description description ";
     }
 }
 //to prevent animation compounding
 var active = 0;
-//to properly switch chakras
+//to switch chakras
 var oldImg = "Resources/black.png";
-
 var set;
 var oldChakra = 0;
 var chakras = [
@@ -45,17 +44,16 @@ window.onload = function () {
     $("0").style.width = "70px";
     //set page
     setChakra(0);
-    C($("info").style.width);
 }
 
-//keep important things visible
+//keep important things visible for different window sizes
 window.onresize = function () {
     if (active == 0) {
         $("chakras").style.left = window.innerWidth / 3 - 350 + "px";
-        if (oldChakra != 8) {
-            $("info").style.right = window.innerWidth / 3 - 100 + "px";
+        if (set == 9) {
+            $("info").style.right = "1%";
         } else {
-            $("info").style.right = "2%";
+            $("info").style.right = window.innerWidth / 3 - 100 + "px";
         }
     }
 }
@@ -81,13 +79,12 @@ function out(chakra) {
 
 //slide to next display
 function setChakra(chakra) {
-    C(chakra);
-    //if returning from description
+    //if returning from a description page
     if (set == 9) {
         chakra = oldChakra;
+        oldChakra = 9;
     }
-    C(chakra);
-    //set chakra visibility
+    //set chakra buttons visibility
     if (chakra == 8 && oldChakra != 8) {
         $("7").hidden = true;
         $("6").hidden = true;
@@ -116,7 +113,7 @@ function setChakra(chakra) {
         }
         //if $info is on screen (slide is not done)
         else if ($(chakra).style.width != "0px") {
-            $("info").style.right = $("info").style.right.substring(0, $("info").style.right.length - 2) + 1 + "px";
+            $("info").style.right = parseInt($("info").style.right.substring(0, $("info").style.right.length - 2)) + 25 + "px";
             $(chakra).style.width = $(chakra).style.width.substring(0, $(chakra).style.width.length - 2) - 2 + "px";
             if (chakra != oldChakra) {
                 $(oldChakra).style.width = $(oldChakra).style.width.substring(0, $(oldChakra).style.width.length - 2) - 2 + "px";
@@ -126,7 +123,7 @@ function setChakra(chakra) {
         else {
             active--;
             clearInterval(animationc);
-            //change chakras
+            //change chakra buttons
             if (chakra == oldChakra) {
                 //chakra > default
                 set = 0;
@@ -145,36 +142,31 @@ function setChakra(chakra) {
                 oldImg = $(chakra).src;
                 $(chakra).src = "Resources/black.png";
             }
-            //change display
-            {
-                //change info
-                if (oldChakra != 8 && chakra == 8) {
-                    //if to a description page
-                    $("header").innerHTML = chakras[oldChakra].name + " Description";
-                    $("details").innerHTML = chakras[set].description;
-                    $("frequency").innerHTML = "";
-                    $("sense").innerHTML = "";
-                    $("good").innerHTML = "";
-                    $("bad").innerHTML = "";
-                }
-                else {
-                    //if to a chakra page
-                    $("i").style.borderColor = chakras[set].color;
-                    $("i").style.color = chakras[set].color;
-                    $("header").style.color = chakras[set].color;
-                    $("header").innerHTML = chakras[set].name;
-                    $("good").innerHTML = chakras[set].good;
-                    $("bad").innerHTML = chakras[set].bad;
-                    $("details").innerHTML = chakras[set].details;
-                    $("frequency").innerHTML = chakras[set].frequency;
-                    $("sense").innerHTML = chakras[set].sense;
-                }
-
-
+            //change $info
+            if (oldChakra != 8 && chakra == 8) {
+                //if to a description page
+                $("info").style.width = "90%";
+                $("header").innerHTML = chakras[oldChakra].name + " Description";
+                $("details").innerHTML = chakras[set].description;
+                $("frequency").innerHTML = "";
+                $("sense").innerHTML = "";
+            }
+            else {
+                //if to a chakra page
+                $("info").style.width = "210px";
+                $("i").style.borderColor = chakras[set].color;
+                $("i").style.color = chakras[set].color;
+                $("header").style.color = chakras[set].color;
+                $("header").innerHTML = chakras[set].name;
+                $("good").innerHTML = chakras[set].good;
+                $("bad").innerHTML = chakras[set].bad;
+                $("details").innerHTML = chakras[set].details;
+                $("frequency").innerHTML = chakras[set].frequency;
+                $("sense").innerHTML = chakras[set].sense;
             }
 
             //slide $info on screen (and flip chakra(s) back)
-            $("info").style.right = "-210px";
+            $("info").style.right = 0 - $("info").style.width.substring(0, $("info").style.width.length - 2) + "px";
             active++;
             var animationd = setInterval(() => {
                 //if different animation started (cancel slide)
@@ -184,8 +176,10 @@ function setChakra(chakra) {
                 }
                 //if $info is off screen (slide not done)
                 else if ($(chakra).style.width != "70px") {
+                    if (parseInt($("info").style.right.substring(0, $("info").style.right.length - 2)) < window.innerWidth / 3 - 75) {
+                        $("info").style.right = parseInt($("info").style.right.substring(0, $("info").style.right.length - 2)) + 25 + "px";
+                    }
                     $(chakra).style.width = parseInt($(chakra).style.width.substring(0, $(chakra).style.width.length - 2)) + 2 + "px";
-                    $("info").style.right = parseInt($("info").style.right.substring(0, $("info").style.right.length - 2)) - 3 + "px";
                     if (oldChakra != chakra) {
                         $(oldChakra).style.width = parseInt($(oldChakra).style.width.substring(0, $(oldChakra).style.width.length - 2)) + 2 + "px";
                     }
@@ -194,24 +188,16 @@ function setChakra(chakra) {
                 else {
                     active--;
                     clearInterval(animationd);
-                    C(chakra + " C " + set + " S");
-                    oldChakra = set;
-                    if (chakra == 8) {
+                    if (set == 8) {
                         //if to a description page
-                        C("c");
                         set = 9;
-                        C("a");
-                        $("info").style.right = "2%";
-                        $("info").style.width = "94%";//here make width gradual too
 
                     }
                     else {
                         //if to a chakra page
-                        C("b");
-                        $("info").style.right = window.innerWidth / 3 - 100 + "px";
-                        $("info").style.width = "210px";
+                        oldChakra = set;
                     }
-                    C(chakra + " C " + set + " S");
+                    window.onresize();
                 }
             }, 3);
         }
