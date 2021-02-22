@@ -211,7 +211,7 @@ function setChakra(chakra) {
                     //to make mobile load properly (onLoad())
                     if (flushed < 2) {
                         flushed++;
-                        setChakra(8);
+                        setChakra(0);
                     }
                 }
             }, 3);
