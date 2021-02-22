@@ -19,7 +19,7 @@ var oldImg = "Resources/black.png";
 var set;
 var oldChakra = 0;
 var chakras = [
-    new Chakra("black", "TEST", "<strong>Content<br>Healthy<br>Aware</strong>", "<strong>Lost<br>Empty<br>Unwell</strong>", "<li>The word chakra means 'spinning wheel', meant to represent the spinning funnels of energy pointing toward your body.<li>At best, each spins clockwise at a medium pace, exerting energy; Counter-clockwise to absorb it.<li>Each one has a healthy frequency range.<li>The frequency determines the speed, and therefore health of the chakra.", "<i>396-963<br>Hz</i>", "",
+    new Chakra("black", "TESTED", "<strong>Content<br>Healthy<br>Aware</strong>", "<strong>Lost<br>Empty<br>Unwell</strong>", "<li>The word chakra means 'spinning wheel', meant to represent the spinning funnels of energy pointing toward your body.<li>At best, each spins clockwise at a medium pace, exerting energy; Counter-clockwise to absorb it.<li>Each one has a healthy frequency range.<li>The frequency determines the speed, and therefore health of the chakra.", "<i>396-963<br>Hz</i>", "",
         "chakras interact with different parts of who you are and how you feel, such as anger or calm or giving comfort when out of balance, you can experience things like physical illness, depression, overexcitement, and a whole bunch of other things part of chakra management is  not only keeping enough of each chakra, but not too much at a time eitherthere  are ways to heal chakras, such as certain yoga poses, crystals, oils, herbs, verbal sounds, and other chakras - specific practiceseach of these chakras emit an aura layer, and with practice you can sense feel and even see them"),
     new Chakra("red", "Muladhara: Root Chakra", "<strong>Secure<br>Calm<br>Safe</strong>", "<strong>Fear<br>Guilt<br>Anxiety</strong>", "<li>Found level with tailbone.<li>Emits the <strong>Etheric Layer</strong>, extends 2 inches.<li>Connection to the body, directly affects physical health.<li>Connection to physical pleasure, when low you may be irritable.<li>Determines the well being/balance of the rest of the chakras.", "<i>396-432<br>Hz</i>", "<i>Smell</i>",
         " sense of stability safe secure grounded,physical health/bodily needs:food water shelter money safetypleasure  instincts;stressing over  worldly problems, fear, guilt, trauma;feel powerless, stop keeping up with basic needs, irratible, overeatting, hoarding, greed;PHYSICAL SYMPTOMS;breathing and breathe excersises is the best fix;as you do, feel the red roots connecting with the earthmaybe go barefoot on the dirt;necessary to balance other chakras,;your soul sits here when you're in the moment, and moves up to the third eye when you open it,"),
@@ -52,6 +52,7 @@ window.onload = function () {
     $("0").style.width = "70px";
     //set page
     setChakra(0);
+    scroll();
 }
 
 //keep important things visible for different window sizes
