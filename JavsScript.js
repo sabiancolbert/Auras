@@ -16,7 +16,7 @@ class Chakra {
     }
 }
 //to prevent animation compounding
-var active = 0;
+var activeAnimations = 0;
 //to switch chakras
 var stopPoint = window.innerWidth * .7 - 105;
 var set;
@@ -24,7 +24,7 @@ var oldImg = "Resources/black.png";
 var oldChakra = 0;
 var chakras = [
     new Chakra("black", "Chakras", "Content<br>Healthy<br>Aware", "Lost<br>Empty<br>Unwell", "<li>The word chakra means 'spinning wheel', meant to represent the spinning funnels of energy pointing toward your body.<li>At best, each spins clockwise at a medium pace, exerting energy; Counter-clockwise to absorb it.<li>Each one has a healthy frequency range.<li>The frequency determines the speed, and therefore health of the chakra.", "396-963<br>Hz", "",
-        "yog", "oil", "cr", "chakras interact with different parts of who you are and how you feel, such as anger or calm or giving comfort when out of balance, you can experience things like physical illness, depression, overexcitement, and a whole bunch of other things part of chakra management is  not only keeping enough of each chakra, but not too much at a time eitherthere  are ways to heal chakras, such as certain yoga poses, crystals, oils, herbs, verbal sounds, and other chakras - specific practiceseach of these chakras emit an aura layer, and with practice you can sense feel and even see them"),
+        "one<br>two<br>three<br>four", "one<br>two<br>three<br>four", "one<br>two<br>three<br>four", "chakras interact with different parts of who you are and how you feel, such as anger or calm or giving comfort when out of balance, you can experience things like physical illness, depression, overexcitement, and a whole bunch of other things part of chakra management is  not only keeping enough of each chakra, but not too much at a time eitherthere  are ways to heal chakras, such as certain yoga poses, crystals, oils, herbs, verbal sounds, and other chakras - specific practiceseach of these chakras emit an aura layer, and with practice you can sense feel and even see them"),
     new Chakra("red", "Muladhara: Root Chakra", "Secure<br>Calm<br>Safe", "Fear<br>Guilt<br>Anxiety", "<li>Found level with tailbone.<li>Emits the Etheric Layer, extends 2 inches.<li>Connection to the body, directly affects physical health.<li>Connection to physical pleasure, when low you may be irritable.<li>Determines the well being/balance of the rest of the chakras.", "396-432<br>Hz", "Smell",
         "", "", "", "sense of stability safe secure grounded,physical health/bodily needs:food water shelter money safetypleasure  instincts;stressing over  worldly problems, fear, guilt, trauma;feel powerless, stop keeping up with basic needs, irratible, overeatting, hoarding, greed;PHYSICAL SYMPTOMS;breathing and breathe excersises is the best fix;as you do, feel the red roots connecting with the earthmaybe go barefoot on the dirt;necessary to balance other chakras,;your soul sits here when you're in the moment, and moves up to the third eye when you open it,"),
     new Chakra("orange", "Svadhishthana: Sacral Chakra", "Confident<br>Creative<br>Loving", "Sensitive<br>Fakeness<br>Addiction", "<li>Found two inches under the belly button.<li>Emits the Emotional Layer, extends 3 inches from the body.<li>Connection to emotions, when low you may put on a social mask.<li>Connection to creative pleasure, directly affects sexuality.<li>Determines your control over your emotions such as anger.", "417-480<br>Hz", "Taste",
@@ -59,15 +59,26 @@ window.onload = function () {
     setChakra(0);
 }
 
-//keep important things visible for different window sizes
-window.onresize = function () {
-    if (active == 0) {
-        $("chakras").style.left = window.innerWidth / 3 - 350 + "px";
-        if (set == 9) {
-            $("info").style.width = .98 * window.innerWidth - 55 + "px"
-        } else {
-            $("info").style.left = window.innerWidth * .7 - 130 + "px";
+window.onresize = function () { adjust(); };
+//keep important things visible
+function adjust(toDescription = false) {
+    //adjust $chakras
+    $("chakras").style.left = window.innerWidth / 3 - 350 + "px";
+    //adjust $info
+    if (set == 9 || toDescription) {
+        //if to a description page
+        var pad = window.innerWidth / 10 + (window.innerWidth / 30);
+        $("info").style.padding = "0 " + pad + "px 60px " + pad + "px";
+        $("info").style.width = .98 * window.innerWidth - 20 - (pad * 2) + "px"
+        if (activeAnimations == 0) {
+            $("info").style.left = "1%";
         }
+    }
+    else {
+        //if to a chakra page
+        $("info").style.padding = "0 20px 60px 20px";
+        $("info").style.width = "210px";
+        $("info").style.left = window.innerWidth * .7 - 130 + "px";
     }
 }
 
@@ -106,11 +117,11 @@ function setChakra(chakra) {
         $("1").hidden = false;
     }
     //slide $info off screen (and flip chakra(s))
-    active++;
+    activeAnimations++;
     var animationc = setInterval(() => {
         //if different animation started (cancel slide)
-        if (active != 1) {
-            active--;
+        if (activeAnimations != 1) {
+            activeAnimations--;
             clearInterval(animationc);
         }
         //if $info is on screen (slide is not done)
@@ -123,7 +134,7 @@ function setChakra(chakra) {
         }
         //if $info is off screen (slide is done)
         else {
-            active--;
+            activeAnimations--;
             clearInterval(animationc);
             //change chakra buttons
             if (chakra == oldChakra) {
@@ -148,11 +159,13 @@ function setChakra(chakra) {
             if (oldChakra != 8 && chakra == 8) {
                 //if to a description page
                 stopPoint = .01 * window.innerWidth;
-                $("info").style.width = .98 * window.innerWidth - 55 + "px";
+                adjust(true);
                 $("header").innerHTML = chakras[oldChakra].name + " Description";
-                $("left").innerHTML = chakras[oldChakra].yoga;
-                $("middle").innerHTML = chakras[oldChakra].oils;
-                $("right").innerHTML = chakras[oldChakra].crystals;
+                $("left").style.color = "black";
+                $("left").innerHTML = "<strong>Yoga:</strong><br>" + chakras[oldChakra].yoga;
+                $("middle").innerHTML = "<strong>Oils:</strong><br>" + chakras[oldChakra].oils;
+                $("right").style.color = "black";
+                $("right").innerHTML = "<strong>Crystals:</strong><br>" + chakras[oldChakra].crystals;
                 $("information").innerHTML = chakras[oldChakra].description;
                 $("frequency").innerHTML = "";
                 $("sense").innerHTML = "";
@@ -160,14 +173,18 @@ function setChakra(chakra) {
             else {
                 //if to a chakra page
                 stopPoint = window.innerWidth * .7 - 105;
+                adjust();
                 $("info").style.width = "210px";
+                $("info").style.padding = "0 20px 60px 20px";
                 $("i").style.borderColor = chakras[set].color;
                 $("i").style.color = chakras[set].color;
                 $("header").style.color = chakras[set].color;
                 $("header").innerHTML = chakras[set].name;
-                $("left").innerHTML = chakras[set].good;
-                $("middle").innerHTML = "";
-                $("right").innerHTML = chakras[set].bad;
+                $("left").style.color = "green";
+                $("left").innerHTML = "<strong>" + chakras[set].good + "</strong>";
+                $("middle").innerHTML = "<br><Br><Br>";
+                $("right").innerHTML = "<strong>" + chakras[set].bad + "</strong>";
+                $("right").style.color = "red";
                 $("information").innerHTML = chakras[set].details;
                 $("frequency").innerHTML = chakras[set].frequency;
                 $("sense").innerHTML = chakras[set].sense;
@@ -175,11 +192,11 @@ function setChakra(chakra) {
 
             //slide $info on screen (and flip chakra(s) back)
             $("info").style.left = window.innerWidth + "px";
-            active++;
+            activeAnimations++;
             var animationd = setInterval(() => {
                 //if different animation started (cancel slide)
-                if (active != 1) {
-                    active--;
+                if (activeAnimations != 1) {
+                    activeAnimations--;
                     clearInterval(animationd);
                 }
                 //if $info is off screen (slide not done)
@@ -194,18 +211,17 @@ function setChakra(chakra) {
                 }
                 //if $info is on screen (slide is done)
                 else {
-                    active--;
+                    activeAnimations--;
                     clearInterval(animationd);
                     if (set == 8) {
                         //if to a description page
                         set = 9;
-                        $("info").style.left = "1%";
                     }
                     else {
                         //if to a chakra page
                         oldChakra = set;
-                        $("info").style.left = window.innerWidth * .7 - 130 + "px";
                     }
+                    adjust();
                 }
             }, 3);
         }
