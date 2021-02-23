@@ -12,8 +12,6 @@ class Chakra {
         this.description = description;
     }
 }
-//to fix mobile layout
-var flushed = 0;
 //to prevent animation compounding
 var active = 0;
 //to switch chakras
@@ -42,7 +40,7 @@ var chakras = [
 
 window.onload = function () {
     //to make later code work
-    $("info").style.right = window.innerWidth / 3 - 100 + "px";
+    $("info").style.right = "4000px";
     $("8").style.width = "70px";
     $("7").style.width = "70px";
     $("6").style.width = "70px";
@@ -70,21 +68,10 @@ window.onresize = function () {
 
 //animate a slight tilt
 function over(chakra) {
-    active++;
-    var animationa = setInterval(() => {
-        if ($(chakra).style.width == "60px" || active != 1) {
-            active--;
-            clearInterval(animationa);
-        }
-        else {
-            $(chakra).style.width = $(chakra).style.width.substring(0, $(chakra).style.width.length - 2) - 2 + "px";
-        }
-    }, 10);
 }
 
 //animate a slight un-tilt
 function out(chakra) {
-    $(chakra).ro
 }
 
 //slide to next display
@@ -186,7 +173,7 @@ function setChakra(chakra) {
                 }
                 //if $info is off screen (slide not done)
                 else if ($(chakra).style.width != "70px") {
-                    if (parseInt($("info").style.right.substring(0, $("info").style.right.length - 2)) < window.innerWidth / 3 - 75) {
+                    if (parseInt($("info").style.right.substring(0, $("info").style.right.length - 2)) < window.innerWidth / 3 - 125) {
                         $("info").style.right = parseInt($("info").style.right.substring(0, $("info").style.right.length - 2)) + 25 + "px";
                     }
                     $(chakra).style.width = parseInt($(chakra).style.width.substring(0, $(chakra).style.width.length - 2)) + 2 + "px";
@@ -201,17 +188,12 @@ function setChakra(chakra) {
                     if (set == 8) {
                         //if to a description page
                         set = 9;
-
+                        $("info").style.right = "1%";
                     }
                     else {
                         //if to a chakra page
                         oldChakra = set;
-                    }
-                    window.onresize();
-                    //to make mobile load properly (onLoad())
-                    if (flushed < 2) {
-                        flushed++;
-                        setChakra(0);
+                        $("info").style.right = window.innerWidth / 3 - 100 + "px";
                     }
                 }
             }, 3);
