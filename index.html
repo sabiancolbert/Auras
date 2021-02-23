@@ -39,13 +39,19 @@
     <!--info-->
 
     <section id="info">
-
-        <button id="i" onmouseup="setChakra(8)"><strong>i</strong></button>
-        <div id="good" style="font-size: 20px;height:110px;color:#02a31d;float:left;text-align:left"></div>
-        <div id="bad" style="font-size: 20px;height:110px;color:rgb(172, 0, 0);float:right;text-align:right"></div>
-        <div id="details" style="vertical-align: middle;font-size: 25px;height:260;text-shadow: 2px 2px #777777;float:left;width:100%;margin-bottom:40px"></div>
-        <div id="frequency" style="font-size: 15px;height:35px;bottom:25px;position:absolute"></div>
-        <div id="sense" style="font-size: 15px;height:35px;bottom:25px;position:absolute;right:20px"></div>
+        <strong>
+            <div id="left" style="font-size: 20px;height:110px;color:#02a31d;left:10%;top:20px;text-align:left"></div>
+            <div style="top:-20px;position: relative;width: 100%;">
+                <button id="i" onmouseup="setChakra(8)">i</button>
+                <div id="middle" style="position:relative;font-size: 20px;height:110px;left:25%;text-align:center"></div>
+            </div>
+            <div id="right" style="font-size: 20px;height:110px;color:rgb(172, 0, 0);top:20px;right:10%;text-align:right"></div>
+        </strong>
+        <div id="information" style="top:-50px;font-size: 25px;text-shadow: 2px 2px #777777;width:100%;position: relative"></div>
+        <i>
+            <div id="frequency" style="font-size: 15px;height:35px;bottom:25px;"></div>
+            <div id="sense" style="font-size: 15px;height:35px;bottom:25px;right:20px"></div>
+        </i>
     </section>
 
     <body>
