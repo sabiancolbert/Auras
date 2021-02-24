@@ -1,4 +1,3 @@
-
 function $($) { return document.getElementById($); }
 class Chakra {
     constructor(color, name, good, bad, details, frequency, sense, yoga, oils, crystals, description) {
@@ -24,9 +23,9 @@ var oldImg = "Resources/black.png";
 var oldChakra = 0;
 var chakras = [
     new Chakra("black", "Chakras", "Content<br>Healthy<br>Aware", "Lost<br>Empty<br>Unwell", "<li>The word chakra means 'spinning wheel', meant to represent the spinning funnels of energy pointing toward your body.<li>At best, each spins clockwise at a medium pace, exerting energy; Counter-clockwise to absorb it.<li>Each one has a healthy frequency range.<li>The frequency determines the speed, and therefore health of the chakra.", "396-963<br>Hz", "",
-        "one<br>two<br>three<br>four", "one<br>two<br>three<br>four", "one<br>two<br>three<br>four", "chakras interact with different parts of who you are and how you feel, such as anger or calm or giving comfort when out of balance, you can experience things like physical illness, depression, overexcitement, and a whole bunch of other things part of chakra management is  not only keeping enough of each chakra, but not too much at a time eitherthere  are ways to heal chakras, such as certain yoga poses, crystals, oils, herbs, verbal sounds, and other chakras - specific practiceseach of these chakras emit an aura layer, and with practice you can sense feel and even see them"),
-    new Chakra("red", "Muladhara: Root Chakra", "Secure<br>Calm<br>Safe", "Fear<br>Guilt<br>Anxiety", "<li>Found level with tailbone.<li>Emits the Etheric Layer, extends 2 inches.<li>Connection to the body, directly affects physical health.<li>Connection to physical pleasure, when low you may be irritable.<li>Determines the well being/balance of the rest of the chakras.", "396-432<br>Hz", "Smell",
-        "", "", "", "sense of stability safe secure grounded,physical health/bodily needs:food water shelter money safetypleasure  instincts;stressing over  worldly problems, fear, guilt, trauma;feel powerless, stop keeping up with basic needs, irratible, overeatting, hoarding, greed;PHYSICAL SYMPTOMS;breathing and breathe excersises is the best fix;as you do, feel the red roots connecting with the earthmaybe go barefoot on the dirt;necessary to balance other chakras,;your soul sits here when you're in the moment, and moves up to the third eye when you open it,"),
+        "", "", "", "chakras interact with different parts of who you are and how you feel, such as anger or calm or giving comfort when out of balance, you can experience things like physical illness, depression, overexcitement, and a whole bunch of other things part of chakra management is  not only keeping enough of each chakra, but not too much at a time eitherthere  are ways to heal chakras, such as certain yoga poses, crystals, oils, herbs, verbal sounds, and other chakras - specific practiceseach of these chakras emit an aura layer, and with practice you can sense feel and even see them"),
+    new Chakra("red", "Muladhara: Root Chakra", "Secure<br>Calm<br>Safe", "Fear<br>Guilt<br>Anxiety", "<li>Connection to the body<li>Found level with tailbone.<li>Emits the Etheric Layer, extends 2 inches.<li>Earth's root chakra is at Mt.Shasta<li>The name Muladhara comes from Mula (root) and Adhara (base)", "396-432<br>Hz", "Smell",
+        "Malasana<br>Uttanasana<br>Balasana<br>Sukhasana", "Patchouli<br>Frankincense<br>Cedarwood<br>Myrrh<br>Vetiver", "", "The Root Chakra is the base chakra and is necessary to balance the other chakras. While you're living your daily life or in the moment, your soul sits here (it moves up to the third eye chakra otherwise). This chakra provides a sense of stability/being grounded and being safe/secure. Relates to food, water, shelter, safety, money, pleasure and instincts. May be thrown out of balance from stressing over worldly problems, fear, guilt or trauma. When out of balance you may feel sluggish/depressed, have anxiety/panic attacks, be irritable/angry and you may under/over eat or basic self care needs may not be met. Physical symptoms can include discomfort in the lower back/legs/feet and bathroom issues such as constipation. The best way to help improve ones Root Chakra is through proper breathing and breathing exercises. It also helps to connect with the earth: take a walk, sit under a tree, play in the dirt; sense the red energy flowing in. When meditating, the mantra to make is 'lam'(luhm)."),
     new Chakra("orange", "Svadhishthana: Sacral Chakra", "Confident<br>Creative<br>Loving", "Sensitive<br>Fakeness<br>Addiction", "<li>Found two inches under the belly button.<li>Emits the Emotional Layer, extends 3 inches from the body.<li>Connection to emotions, when low you may put on a social mask.<li>Connection to creative pleasure, directly affects sexuality.<li>Determines your control over your emotions such as anger.", "417-480<br>Hz", "Taste",
         "", "", "", ""),
     new Chakra("yellow", "Manipura: Solar Plexus Chakra", "Motivated<br>Confident<br>Powerful", "Helpless<br>Insecure<br>Controlling", "<li>Found under the stomach pit.<li>Emits the Mental Layer, found 3-8 inches from the body but expands.<li>Connection to confidence, directly affects manifesting your desires.<li>Connection to progressive pleasure, when low you may be irresponsible.<li>Determines good judgement.", "528<br>Hz", "Sight",
@@ -68,7 +67,7 @@ function adjust(toDescription = false) {
     if (set == 9 || toDescription) {
         //if to a description page
         var pad = window.innerWidth / 10 + (window.innerWidth / 30);
-        $("info").style.padding = "0 " + pad + "px 60px " + pad + "px";
+        $("info").style.padding = "0 " + pad + "px 65px " + pad + "px";
         $("info").style.width = .98 * window.innerWidth - 20 - (pad * 2) + "px"
         if (activeAnimations == 0) {
             $("info").style.left = "1%";
@@ -76,7 +75,7 @@ function adjust(toDescription = false) {
     }
     else {
         //if to a chakra page
-        $("info").style.padding = "0 20px 60px 20px";
+        $("info").style.padding = "0 20px 65px 20px";
         $("info").style.width = "210px";
         $("info").style.left = window.innerWidth * .7 - 130 + "px";
     }
@@ -169,6 +168,11 @@ function setChakra(chakra) {
                 $("information").innerHTML = chakras[oldChakra].description;
                 $("frequency").innerHTML = "";
                 $("sense").innerHTML = "";
+                if (oldChakra == 0) {
+                    $("left").innerHTML = "";
+                    $("middle").innerHTML = "";
+                    $("right").innerHTML = "";
+                }
             }
             else {
                 //if to a chakra page
